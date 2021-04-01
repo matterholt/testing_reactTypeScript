@@ -1,0 +1,54 @@
+.userForm{
+    font-size: 65.7%;
+    width:250px;
+    background-color: #424242;
+    color: #E9E9E9;
+    display:flex;
+    flex-direction: column;
+    text-align: start;
+    padding: 10px;
+    border-radius: 5px;
+}
+label,
+input,
+textarea {
+    font-size: 1.5em;
+    margin:5px;
+}
+textarea{
+    resize: vertical;
+}
+button{
+    border:none;
+    padding:10px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 1.2em;
+}
+.submitButton {
+    background-color: #FF9900;
+}
+.formAction{
+    display:flex;
+    margin:20px 10px;
+    justify-content: space-between;
+}
+.formStatus {
+    font-size: 1.2em;
+    padding:5px;
+    text-align: center;
+    font-weight: 900;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+.success{
+    background-color: rgb(194, 219, 191);
+    color:rgb(27, 144, 6);
+}
+.error{
+    background-color: rgb(219, 191, 191);
+    color:rgb(144, 6, 6);
+}
+.submitting{
+    color:rgb(216, 206, 76);
+}
