@@ -1,6 +1,13 @@
 .App {
   text-align: center;
 }
+.action_display{
+  display:flex;
+  justify-content: space-evenly;
+  list-style: none;
+
+
+}
 
 .App-logo {
   height: 40vmin;

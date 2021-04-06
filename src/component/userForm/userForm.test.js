@@ -33,7 +33,6 @@ test('Initial State of form', () => {
       userLabel,
       positionTitle,
       responsibility,
-      formStatus,
     } = renderUsage();
 
     // initial Assertion for the buttons

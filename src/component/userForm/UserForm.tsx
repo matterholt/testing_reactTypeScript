@@ -1,7 +1,7 @@
 import { useState} from 'react'
 import "./userForm.css"
 
-import { updateUserSpecs } from '../utils'
+import { updateUserSpecs } from '../../utils'
 
 const FormStatusView = ({status}: {status: string}) => {
     
@@ -69,6 +69,8 @@ export default function UserForm({ username="" }: formProps) {
 
     return (
         <form className="userForm" onSubmit={handleSubmit}>
+                          <h2>User Profile</h2>
+
             <label htmlFor="username">Username</label>
             <input
                 type='text'
