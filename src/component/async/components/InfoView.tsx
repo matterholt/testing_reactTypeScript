@@ -12,16 +12,19 @@ type pokemonType = {
     }
 }
 
+
 const PokemonType = ({typeName}: {typeName: pokemonType[]}) => (
-    <ul>
-        {typeName.map((x: pokemonType) => (<li>{JSON.stringify(x)}</li>))}
+    <ul className="">
+        {typeName.map((x: pokemonType) => (<li>{x.type.name}</li>))}
     </ul>
 )
 
+// update any type
+type retrieveData = { data: { name: string, sprites: { front_default: string } | null, types: pokemonType[] } }
+    
 
-
-const ViewIt = ({ data }: { data: any }) => {
-
+const ViewIt = ({ data }: { data:any) => {
+    console.log(data)
     return (
         <div>
             <h3>name of {data.name}</h3>
@@ -49,7 +52,7 @@ const StatusView = ({ state }: dataProps) => {
         return(<h2>Loading</h2>)
     }
     if (status === 'success') {
-        return (<ViewIt data={data }/>)
+        return (<ViewIt data={data}/>)
     }
         if (status === 'error') {
             return (<h2>{error }</h2>)
@@ -77,7 +80,6 @@ function ItemInfo({ searchValue }:{searchValue:string}) {
             try {
                 setState({ ...state, status: "loading" })
                 const respData = await axios.get(API)
-                console.log(respData.data.types)
                 setState({...state, data:respData.data, status:"success"})
             } catch (e) {
                 setState({...state, error: e, status:"error"})
