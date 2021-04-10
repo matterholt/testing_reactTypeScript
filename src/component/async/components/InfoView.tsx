@@ -2,11 +2,31 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
+const API = "https://pokeapi.co/api/v2/pokemon/bibarel"
 
-const ViewIt = ({ data }: {data:any})=>{
+type pokemonType = {
+    slot: number;
+    type: {
+        name: string;
+        url: string;
+    }
+}
+
+const PokemonType = ({typeName}: {typeName: pokemonType[]}) => (
+    <ul>
+        {typeName.map((x: pokemonType) => (<li>{JSON.stringify(x)}</li>))}
+    </ul>
+)
+
+
+
+const ViewIt = ({ data }: { data: any }) => {
+
     return (
         <div>
-            <h3>name of</h3>
+            <h3>name of {data.name}</h3>
+            <img alt="poke pic" src={data.sprites.front_default} />
+            <PokemonType typeName={ data.types }/>
         </div>
     )
 
@@ -51,6 +71,20 @@ function ItemInfo({ searchValue }:{searchValue:string}) {
         data: null,
         error: null
     })
+
+    useEffect(() => {
+        const fetchItems = async () => {
+            try {
+                setState({ ...state, status: "loading" })
+                const respData = await axios.get(API)
+                console.log(respData.data.types)
+                setState({...state, data:respData.data, status:"success"})
+            } catch (e) {
+                setState({...state, error: e, status:"error"})
+            }
+        }
+        fetchItems()
+    },[])
     
     
     return <StatusView state={state}/>
